@@ -1,10 +1,13 @@
 package edu.uw.intentdemo;
 
+import android.content.Intent;
 import android.support.v4.widget.CursorAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.AdapterView;
 import android.widget.SimpleCursorAdapter;
+import android.widget.TextView;
 
 public class SecondActivity extends AppCompatActivity {
 
@@ -22,6 +25,13 @@ public class SecondActivity extends AppCompatActivity {
         //action bar "back"
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        Intent intent = getIntent();
+        Bundle extras = intent.getExtras();
+        String msg = extras.getString("edu.uw.intentdemo.message");
+
+        Log.v(TAG, msg);
+
+        ((TextView) findViewById(R.id.txtSecond)).setText(msg);
 
         //TODO: fill in the link between columns and ids!
         String[] cols = new String[]{};
